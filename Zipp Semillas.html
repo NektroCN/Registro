@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Inicio de Sesión y Registro</title>
+    <link rel="stylesheet" href="semilla.css">
+</head>
+<body>
+    <header>
+        <img src="img.png" width="100px" height="100px" alt="Logo de Fundacion Zipp Semillas">
+        <h1>Fundacion Zipp Semillas</h1>
+        <p>Brindando esperanza, educación y felicidad a niños de todo el mundo.</p>
+    </header>
+
+    <div class="container">
+        <h2>Seleccione su Rol</h2>
+        <button id="btn-director">Director</button>
+        <button id="btn-usuario">Usuario</button>
+        <button id="btn-funcionario">Funcionario</button>
+
+        <div id="campos-director" class="container container-director">
+            <h2>Iniciar Sesión como Director</h2>
+            <label>Usuario<input type="text"></label>
+            <label>Contraseña<input type="password"></label>
+            <button>Iniciar Sesión</button>
+            <a href="#">Recuperar Contraseña</a>
+            <button type="button" class="btn btn-cancel" onclick="showRegisterForm()">Registrarse</button>
+        </div>
+
+        <div id="campos-usuario" class="container container-usuario">
+            <h2>Iniciar Sesión como Usuario</h2>
+            <label>Usuario<input type="text"></label>
+            <label>Contraseña<input type="password"></label>
+            <button>Iniciar Sesión</button>
+            <a href="#">Recuperar Contraseña</a>
+            <button type="button" class="btn btn-cancel" onclick="showRegisterForm()">Registrarse</button>
+        </div>
+
+        <div id="campos-funcionario" class="container container-funcionario">
+            <h2>Iniciar Sesión como Funcionario</h2>
+            <label>Usuario<input type="text"></label>
+            <label>Contraseña<input type="password"></label>
+            <button>Iniciar Sesión</button>
+            <a href="#">Recuperar Contraseña</a>
+            <button type="button" class="btn btn-cancel" onclick="showRegisterForm()">Registrarse</button>
+        </div>
+
+        <div id="register-form" style="display: none;">
+            <h2>Registrarse</h2>
+            <form>
+                <label for="nombres">Nombre:</label>
+                <input type="text" id="nombres" name="nombres" required><br>
+
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" id="apellidos" name="apellidos" required><br>
+
+                <label for="tipo_documento">Tipo de Documento:</label>
+                <select id="tipo_documento" name="tipo_documento">
+                    <option value="Cédula de Ciudadania">Cédula de Ciudadania</option>
+                    <option value="Tarjeta de Identidad">Tarjeta de Identidad</option>
+                    <option value="Cédula de extranjera">Cédula de extranjera</option>
+                    <option value="pasaporte">Pasaporte</option>
+                </select>
+
+                <label for="document_number">Número de Documento:</label>
+                <input type="text" id="document_number" name="document_number" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+
+                <label for="age">Edad:</label>
+                <input type="text" id="age" name="age" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+
+                <label for="phone">Teléfono:</label>
+                <input type="text" id="phone" name="phone" oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+
+                <label for="direccion">Dirección:</label>
+                <input type="text" id="direccion" name="direccion" required><br>
+
+                <label for="genero">Género:</label>
+                <select id="genero" name="genero">
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                    <option value="otro">Otro</option>
+                </select><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br>
+
+                <label for="eps">EPS:</label>
+                <input type="text" id="eps" name="eps"><br>
+
+                <label for="usuario_reg">Usuario:</label>
+                <input type="text" id="usuario_reg" name="usuario_reg" required><br>
+
+                <label for="contrasena_reg">Contraseña:</label>
+                <input type="password" id="contrasena_reg" name="contrasena_reg" required><br>
+
+                <button type="submit">Registrarse</button>
+                <button type="button" id="cancelar_registro">Cancelar Registro</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const btnDirector = document.getElementById('btn-director');
+        const btnUsuario = document.getElementById('btn-usuario');
+        const btnFuncionario = document.getElementById('btn-funcionario');
+        const camposArray = ['director', 'usuario', 'funcionario'].map(tipo => document.getElementById(`campos-${tipo}`));
+        const registerForm = document.getElementById('register-form');
+        const documentNumberInput = document.getElementById('document_number');
+        const ageInput = document.getElementById('age');
+
+        btnDirector.addEventListener('click', () => mostrarCampos('director'));
+        btnUsuario.addEventListener('click', () => mostrarCampos('usuario'));
+        btnFuncionario.addEventListener('click', () => mostrarCampos('funcionario'));
+
+        function mostrarCampos(tipo) {
+            camposArray.forEach(campos => campos.style.display = 'none');
+            const camposMostrar = document.getElementById(`campos-${tipo}`);
+            camposMostrar.style.display = 'block';
+            registerForm.style.display = 'none';
+        }
+
+        function showRegisterForm() {
+            camposArray.forEach(campos => campos.style.display = 'none');
+            registerForm.style.display = 'block';
+        }
+
+        documentNumberInput.addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        ageInput.addEventListener('input', function() {
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+    </script>
+</body>
+</html>

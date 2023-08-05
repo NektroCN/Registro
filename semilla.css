@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+
+body {
+    font-family: 'Bebas Neue', sans-serif;
+    background-color: #fbe5df;
+}
+
+header {
+    text-align: center;
+    background-color: #e4aadf;
+    padding: 20px;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.container-director,
+.container-usuario,
+.container-funcionario {
+    background-color: #A66ACD;
+    display: none;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+label,
+input,
+select {
+    display: block;
+    margin-bottom: 15px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff;
+}
+
+select {
+    height: 40px;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    background-color: #e3a1c4;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+button:hover {
+    background-color: #6A5ACD;
+    transform: scale(1.05);
+}
+
+a {
+    color: #003366;
+    text-decoration: underline;
+    transition: color 0.3s ease, text-decoration 0.3s ease;
+}
+
+a:hover {
+    color: #3b2b52;
+    text-decoration: none;
+}
+
+
+@media (max-width: 991px) {
+    .container {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    header {
+        padding: 10px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    select {
+        font-size: 14px;
+    }
+
+    button {
+        padding: 8px 15px;
+        margin-top: 5px;
+    }
+}
